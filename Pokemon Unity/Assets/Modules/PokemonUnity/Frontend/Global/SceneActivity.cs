@@ -75,7 +75,7 @@ public class SceneActivity : MonoBehaviour
         SaveData.currentSave.playerID = 29482;
         SaveData.currentSave.isMale = true;
 
-        SaveData.currentSave.playerOutfit = "hgss";
+        SaveData.currentSave.playerOutfit = "bw";
 
         //PC test
         SaveData.currentSave.PC.addPokemon(new Pokemon(006, null, Pokemon.Gender.CALCULATE, 3, true, "Poké Ball", "",
@@ -95,7 +95,7 @@ public class SceneActivity : MonoBehaviour
         SaveData.currentSave.PC.addPokemon(new Pokemon(157, Pokemon.Gender.CALCULATE, 51, "Poké Ball", "", SaveData.currentSave.playerName, 0));
         SaveData.currentSave.PC.addPokemon(new Pokemon(300, Pokemon.Gender.CALCULATE, 51, "Poké Ball", "", SaveData.currentSave.playerName, 0));
 
-        SaveData.currentSave.PC.addPokemon(new Pokemon(393, "Surf Bloke", Pokemon.Gender.MALE, 15, false, "Ultra Ball",
+        SaveData.currentSave.PC.addPokemon(new Pokemon(1, null, Pokemon.Gender.MALE, 15, false, "Ultra Ball",
             "", SaveData.currentSave.playerName,
             31, 31, 31, 31, 31, 31, 0, 252, 0, 0, 0, 252, "ADAMANT", 0,
             new string[] {"Drill Peck", "Surf", "Growl", "Dragon Rage"}, new int[] {0, 0, 0, 3}));
@@ -212,7 +212,7 @@ public class SceneActivity : MonoBehaviour
         ////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
-    void CheckLevelLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    public void CheckLevelLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "startup")
         {

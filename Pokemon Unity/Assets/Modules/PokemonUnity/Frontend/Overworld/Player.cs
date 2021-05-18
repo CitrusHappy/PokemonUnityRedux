@@ -33,6 +33,8 @@ public class Player : CharacterBase
     public float surfSpeed = 0.2f;
     public float speed;
 
+    public GameObject footstep;
+
     public bool canInput = true;
 
     public float increment = 1f;
@@ -70,6 +72,8 @@ public class Player : CharacterBase
     public AudioClip bumpClip;
     public AudioClip jumpClip;
     public AudioClip landClip;
+
+    public AudioClip[] grassClips, sandClips;
 
 
     public override void Awake()
@@ -306,6 +310,7 @@ public class Player : CharacterBase
                     //if most recent direction pressed is held, but it isn't the current direction, set it to be
                     if (mostRecentDirectionPressed != (int)direction && isDirectionKeyHeld(mostRecentDirectionPressed))
                     {
+                        //aninm
                         updateDirection((Direction)mostRecentDirectionPressed);
                         if (!moving)
                         {
@@ -565,11 +570,14 @@ public class Player : CharacterBase
     {
         //set initial vector3 based off of direction
         Vector3 movement = getForwardVectorRaw(direction);
+        
 
         //Check destination map	and bridge																//0.5f to adjust for stair height
         //cast a ray directly downwards from the position directly in front of the player		//1f to check in line with player's head
         RaycastHit[] hitColliders = Physics.RaycastAll(transform.position + movement + new Vector3(0, 1.5f, 0),
             Vector3.down);
+            
+            Debug.DrawRay(transform.position + movement + new Vector3(0, 1.5f, 0), Vector3.down, Color.red, 1);
         RaycastHit mapHit = new RaycastHit();
         RaycastHit bridgeHit = new RaycastHit();
         //cycle through each of the collisions
@@ -609,26 +617,37 @@ public class Player : CharacterBase
         //if no bridge at destination
         else if (mapHit.collider != null)
         {
-            //modify the forwards vector to align to the mapHit.
-            movement -= new Vector3(0, (transform.position.y - mapHit.point.y), 0);
+            if (currentMap.getTileTag(transform.position + movement) != 3 && currentMap.getTileTag(transform.position + movement) != 4)
+            {
+                //modify the forwards vector to align to the mapHit.
+                movement -= new Vector3(0, (transform.position.y - mapHit.point.y), 0);
+                //ebug.Log("maphitpoint.y: "+mapHit.point.y);
+            }
+            else
+            {
+                movement -= new Vector3(0, 0, 0);
+            }
+
         }
+
 
 
         float currentSlope = Mathf.Abs(MapCollider.getSlopeOfPosition(transform.position, direction));
         float destinationSlope =
             Mathf.Abs(MapCollider.getSlopeOfPosition(transform.position + getForwardVectorRaw(), direction,
                 checkForBridge));
+            //Debug.Log(movement.y);
         float yDistance = Mathf.Abs((transform.position.y + movement.y) - transform.position.y);
         yDistance = Mathf.Round(yDistance * 100f) / 100f;
-
         //Debug.Log("currentSlope: "+currentSlope+", destinationSlope: "+destinationSlope+", yDistance: "+yDistance);
-
-        //if either slope is greater than 1 it is too steep.
+        //if either slope is greater than 1 it is too steep. change this back to 1 when you edit the models to work
         if ((currentSlope <= 1 && destinationSlope <= 1) && (yDistance <= currentSlope || yDistance <= destinationSlope))
         {
             //if yDistance is greater than both slopes there is a vertical wall between them
             return movement;
         }
+
+
         return Vector3.zero;
     }
 
@@ -638,6 +657,7 @@ public class Player : CharacterBase
         Vector3 movement = getForwardVector();
 
         bool ableToMove = false;
+        
 
         //without any movement, able to move should stay false
         if (movement != Vector3.zero)
@@ -671,7 +691,8 @@ public class Player : CharacterBase
 
                 RaycastHit bridgeHit =
                     MapCollider.getBridgeHitOfPosition(transform.position + movement + new Vector3(0, 0.1f, 0));
-                if (bridgeHit.collider != null || destinationTileTag != 1)
+                    
+                if (bridgeHit.collider != null || destinationTileTag != 1 )
                 {
                     //wall tile tag
 
@@ -681,7 +702,7 @@ public class Player : CharacterBase
                     }
                     else
                     {
-                        if (surfing && destinationTileTag != 2f)
+                        if (surfing && destinationTileTag != 2 )
                         {
                             //disable surfing if not headed to water tile
                             updateAnimation("walk", walkFPS);
@@ -689,6 +710,38 @@ public class Player : CharacterBase
                             surfing = false;
                             StartCoroutine("dismount");
                             BgmHandler.main.PlayMain(accessedAudio, accessedAudioLoopStartSamples);
+                        }
+
+                        if (destinationTileTag == 4)
+                        {
+                            //tall grass tile tag
+                            if (grassClips != null)
+                            {
+                                Player.player.playClip(grassClips[UnityEngine.Random.Range(0,grassClips.Length)]);
+                            }
+                        }
+
+                            if(destinationMap.getTileTag(transform.position) == 5)
+                            {
+                                if (movement.z != 0)
+                                {
+                                    Instantiate(footstep, transform.position + new Vector3(0, .1f, 0), Quaternion.Euler(0, 90, 0));
+                                }
+                                else
+                                {
+                                    Instantiate(footstep, transform.position + new Vector3(0, .1f, 0), Quaternion.identity);
+                                }
+                            }
+
+                        if(destinationTileTag == 5)
+                        {
+
+                            
+                            //sand tile tag
+                            if (sandClips != null)
+                            {
+                                Player.player.playClip(sandClips[UnityEngine.Random.Range(0,sandClips.Length)]);
+                            }   
                         }
 
                         if (destinationMap != currentMap)
@@ -773,6 +826,11 @@ public class Player : CharacterBase
                     {
                         //surf tile
                         StartCoroutine(Player.player.wildEncounter(WildPokemonInitialiser.Location.Surfing));
+                    }
+                    else if (destinationTag == 4)
+                    {
+                        //tall grass tile
+                        StartCoroutine(Player.player.wildEncounter(WildPokemonInitialiser.Location.Grass));
                     }
                     else
                     {
@@ -1039,7 +1097,7 @@ public class Player : CharacterBase
                     yield return StartCoroutine(ScreenFade.main.FadeCutout(false, ScreenFade.slowedSpeed, null));
                     //yield return new WaitForSeconds(sceneTransition.FadeOut(1f));
                     SceneScript.main.Battle.gameObject.SetActive(true);
-                    //StartCoroutine(SceneScript.main.Battle.control(accessedMapSettings.getRandomEncounter(encounterLocation)));
+                    StartCoroutine(SceneScript.main.Battle.Control(accessedMapSettings.getRandomEncounter(encounterLocation)));
 
                     while (SceneScript.main.Battle.gameObject.activeSelf)
                     {
@@ -1058,7 +1116,15 @@ public class Player : CharacterBase
     private void playClip(AudioClip clip)
     {
         PlayerAudio.clip = clip;
-        PlayerAudio.volume = PlayerPrefs.GetFloat("sfxVolume");
+        if(clip.name.Contains("grass") == true)
+        {
+            PlayerAudio.volume = PlayerPrefs.GetFloat("sfxVolume") * 0.2f;
+        }
+        else
+        {
+            PlayerAudio.volume = PlayerPrefs.GetFloat("sfxVolume");
+        }
+
         PlayerAudio.Play();
     }
 

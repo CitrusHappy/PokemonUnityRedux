@@ -7,9 +7,17 @@ using System.Collections;
 using PokemonUnity.Backend.Serializables;
 using PokemonUnity.Backend.Databases;
 using PokemonUnity.Frontend.Overworld.Mapping;
+using PokemonUnity.Frontend.UI.Scenes;
+using PokemonUnity.Frontend.UI;
+using Sirenix.OdinInspector;
+using UnityEditor;
+
 namespace PokemonUnity.Frontend.Overworld {
 public class NPC : CharacterBase
 {
+    private Player Player;
+
+    [BoxGroup("Basic Information")]
     public int pokemonID = 0;
 
     public enum NPCBehaviour
@@ -19,13 +27,18 @@ public class NPC : CharacterBase
         Patrol
     }
 
+    [BoxGroup("Behavior"), EnumToggleButtons]
     public NPCBehaviour npcBehaviour;
     private Sprite[] lightSheet;
 
+    [BoxGroup("Behavior"), ShowIf("npcBehaviour", NPCBehaviour.Patrol)]
     public WalkCommand[] patrol = new WalkCommand[1];
+
+    [BoxGroup("Behavior"), ShowIf("npcBehaviour", NPCBehaviour.Walk)]
     public Vector2 walkRange;
     private Vector3 initialPosition;
 
+    [BoxGroup("Debug"), ReadOnly]
     public bool trainerSurfing = false;
 
     private bool overrideBusy = false;
@@ -35,13 +48,39 @@ public class NPC : CharacterBase
 
     private Light npcLight;
 
+
+    [HideInInspector]
     public MapCollider destinationMap;
 
-    private GameObject exclaim;
+    [HideInInspector]
+    public GameObject exclaim;
 
+    [BoxGroup("Dialogue")]
+    public string[] dialogue;
 
+    [BoxGroup("Pokemon Party")]
+    public PokemonInitialiser[] trainerParty = new PokemonInitialiser[1];
+
+    [OnInspectorGUI]
+	[PropertyOrder(-10), HorizontalGroup("Split", 100), BoxGroup("Pokemon Party")]
+	private void ShowImage()
+	{
+		//GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/Plugins/Sirenix/Assets/Editor/Odin Inspector Logo.png", typeof(Sprite)));
+	}
+
+    [HideInInspector]
+    public Pokemon[] party;
+
+    [BoxGroup("Basic Information")]
+    public string trainerName;
+    
+
+    //this is not being executed by trainers need to fix that
     public override void Awake()
     {
+        party = new Pokemon[trainerParty.Length];
+
+        Player = Player.player;
         pawnSprite = transform.Find("Pawn").GetComponent<SpriteRenderer>();
         pawnReflectionSprite = transform.Find("PawnReflection").GetComponent<SpriteRenderer>();
 
@@ -69,15 +108,26 @@ public class NPC : CharacterBase
         exclaim = transform.Find("Exclaim").gameObject;
     }
 
+    //this is not being executed by trainers need to fix that
     public override void Start()
     {
+        for (int i = 0; i < trainerParty.Length; i++)
+        {
+            party[i] = new Pokemon(trainerParty[i].ID, trainerParty[i].gender, trainerParty[i].level, "Poké Ball", trainerParty[i].heldItem, trainerName, trainerParty[i].ability);
+        }
+
         initialPosition = hitBox.position;
 
         hitBox.localPosition = new Vector3(0, 0, 0);
 
         exclaim.SetActive(false);
 
+
+
         StartCoroutine("animateSprite");
+
+        if(npcBehaviour == NPCBehaviour.Idle)
+        animPause = true;
 
 
         //Check current map
@@ -119,30 +169,8 @@ public class NPC : CharacterBase
     }
 
 
-    //Better exclaimation not yet implemented
-    public IEnumerator exclaimAnimation()
-    {
-        float increment = -1f;
-        float speed = 0.15f;
 
-        exclaim.SetActive(true);
 
-        while (increment < 0.3f)
-        {
-            increment += (1 / speed) * Time.deltaTime;
-            if (increment > 0.3f)
-            {
-                increment = 0.3f;
-            }
-            exclaim.transform.localScale = new Vector3(1, 1.3f + (-1.3f * increment * increment), 1);
-            yield return null;
-        }
-
-        exclaim.transform.localScale = new Vector3(1, 1, 1);
-
-        yield return new WaitForSeconds(1.2f);
-        exclaim.SetActive(false);
-    }
 
     public override IEnumerator animateSprite()
     {
@@ -165,6 +193,7 @@ public class NPC : CharacterBase
                     {
                         frame -= 1;
                     }
+                    //Debug.Log((int)direction);
                     pawnSprite.sprite = spriteSheet[(int)direction * frames + frame];
                     pawnReflectionSprite.sprite = pawnSprite.sprite;
                     yield return new WaitForSeconds(secPerFrame / 4f);
@@ -522,7 +551,84 @@ public class NPC : CharacterBase
     {
         overrideBusy = set;
     }
+
+    public IEnumerator interact()
+    {
+        if (Player.setCheckBusyWith(this.gameObject))
+        {
+            if (npcBehaviour == NPCBehaviour.Walk)
+            {
+                StopCoroutine("walkAtRandom");
+            }
+            else if (npcBehaviour == NPCBehaviour.Patrol)
+            {
+                StopCoroutine("patrolAround");
+            }
+
+            
+            //calculate Player's position relative to target object's and set direction accordingly. (Face the player)
+            float xDistance = this.transform.position.x - Player.gameObject.transform.position.x;
+            float zDistance = this.transform.position.z - Player.gameObject.transform.position.z;
+            if (xDistance >= Mathf.Abs(zDistance))
+            {
+                //Mathf.Abs() converts zDistance to a positive always.
+                direction = Direction.Left; //this allows for better accuracy when checking orientation.
+            }
+            else if (xDistance <= Mathf.Abs(zDistance) * -1)
+            {
+                direction = Direction.Right;
+            }
+            else if (zDistance >= Mathf.Abs(xDistance))
+            {
+                direction = Direction.Down;
+            }
+            else
+            {
+                direction = Direction.Up;
+            }
+
+            //SaveData.currentSave.PC.boxes[0][followerIndex].getName() +
+            foreach (string t in dialogue)
+            {
+                while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
+                {
+                    yield return null;
+                }
+                if (Input.GetButtonDown("Select") || Input.GetButtonDown("Back"))
+                {
+                    SceneScript.main.Dialog.DrawDialogBox();
+                    yield return SceneScript.main.Dialog.StartCoroutine(SceneScript.main.Dialog.DrawText(t));
+                }
+                
+            }
+
+            while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
+            {
+                yield return null;
+            }
+
+            SceneScript.main.Dialog.UnDrawDialogBox();
+            yield return new WaitForSeconds(0.2f);
+            Player.unsetCheckBusyWith(this.gameObject);
+
+
+            if (npcBehaviour == NPCBehaviour.Walk)
+            {
+                StartCoroutine("walkAtRandom");
+            }
+            else if (npcBehaviour == NPCBehaviour.Patrol)
+            {
+                StartCoroutine("patrolAround");
+            }
+        }
+    }
+
+
+
+
+
 }
+
 
 [System.Serializable]
 public class WalkCommand
@@ -530,5 +636,15 @@ public class WalkCommand
     public int direction;
     public int steps;
     public float endWait;
+}
+
+[System.Serializable]
+public class PokemonInitialiser
+{
+    public int ID;
+    public int level;
+    public Pokemon.Gender gender;
+    public string heldItem;
+    public int ability;
 }
 }

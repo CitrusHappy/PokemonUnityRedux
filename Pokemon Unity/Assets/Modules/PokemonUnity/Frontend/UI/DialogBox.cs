@@ -81,6 +81,11 @@ public class DialogBox : MonoBehaviour
         yield return StartCoroutine(DrawText(text, 1f / charPerSec, false));
     }
 
+    public IEnumerator DrawAllText(string[] text)
+    {
+        yield return StartCoroutine(DrawAllText(text, 1f / charPerSec, false));
+    }
+
     public IEnumerator DrawText(string text, float secPerChar)
     {
         yield return StartCoroutine(DrawText(text, secPerChar, false));
@@ -98,8 +103,8 @@ public class DialogBox : MonoBehaviour
 
     public IEnumerator DrawText(string text, float secPerChar, bool silent)
     {
-        string[] words = text.Split(new char[] {' '});
 
+        string[] words = text.Split(new char[] {' '});
         if (!silent)
         {
             SfxHandler.Play(selectClip);
@@ -115,6 +120,31 @@ public class DialogBox : MonoBehaviour
                 StartCoroutine(DrawWord(words[i], secPerChar));
             }
         }
+    }
+
+    public IEnumerator DrawAllText(string[] text, float secPerChar, bool silent)
+    {
+        foreach (string t in text)
+        {
+            string[] words = t.Split(new char[] {' '});
+
+            if (!silent)
+            {
+                SfxHandler.Play(selectClip);
+            }
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (secPerChar > 0)
+                {
+                    yield return StartCoroutine(DrawWord(words[i], secPerChar));
+                }
+                else
+                {
+                    StartCoroutine(DrawWord(words[i], secPerChar));
+                }
+            }
+        }
+        
     }
 
     private IEnumerator DrawWord(string word, float secPerChar)

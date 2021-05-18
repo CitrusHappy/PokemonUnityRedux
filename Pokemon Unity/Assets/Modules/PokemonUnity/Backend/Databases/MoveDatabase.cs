@@ -15,7 +15,6 @@ public static class MoveDatabase
 {
     //Move Effects Name required. 0 if undefined paramater
 
-
     private static MoveData[] moves = new MoveData[]
     {
         new MoveData("Absorb", PokemonData.Type.GRASS, MoveData.Category.SPECIAL, 20, 1f, 25, MoveData.Target.ADJACENT,

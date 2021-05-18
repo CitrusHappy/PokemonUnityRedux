@@ -16,6 +16,10 @@ public class MapSettings : MonoBehaviour
     public Sprite mapNameBoxTexture;
     public Color mapNameColor = new Color(0.066f, 0.066f, 0.066f, 1);
 
+
+    public bool isVFX;
+    public GameObject VFX;
+
     public enum PokemonRarity
     {
         VeryCommon,
@@ -45,6 +49,21 @@ public class MapSettings : MonoBehaviour
     public PokemonRarity pokemonRarity = PokemonRarity.Uncommon;
 
     public WildPokemonInitialiser[] encounters = new WildPokemonInitialiser[0];
+
+    public void Start()
+    {
+        if(VFX != null)
+        {
+            if (isVFX)
+            {
+                VFX.gameObject.SetActive(true);
+            }
+            else
+            {
+                VFX.gameObject.SetActive(false);
+            }
+        }
+    }
 
     // returns the BGM to an external script
     public AudioClip getBGM()

@@ -1,96 +1,47 @@
-﻿/// Source: Pokémon Unity Redux
+/// Source: Pokémon Unity Redux
 /// Purpose: Map collider for Pokémon Unity frontend
 /// Author: IIColour_Spectrum
 /// Contributors: TeamPopplio
 using UnityEngine;
-using System.Collections;
+using UnityEditor;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System.Collections.Generic;
+
 namespace PokemonUnity.Frontend.Overworld.Mapping {
 public class MapCollider : MonoBehaviour
 {
     //Collision Map String provided by DeKay's Collision Map Compiler for Pokémon Essentials
     //See TOOLS folder for details
-
-    public string shorthandCollisionMap = "0x4";
-    public int width = 2;
-    public int length = 2;
-
-    public int xModifier;
-    public int zModifier;
-
-    private int[,] collisionMap;
-
-    public bool drawWireframe;
-    public Color wireframeColor = Color.magenta;
-
-    void Awake()
-    {
-        setCollisionMap();
-    }
-
-
+    
     //Tile Tags:
     //0 - Default Environment
     //1 - Impassable
     //2 - Surf Water
-    //3 - Environment 2
+    //3 - Decor/Ignore Slope (walkable)
+    //4 - Tallgrass (wild encounter)
+    //5 - sand
+
+    public MapScriptable map;
 
     public int getTileTag(Vector3 position)
     {
         int mapX =
             Mathf.RoundToInt(Mathf.Round(position.x) - Mathf.Round(transform.position.x) +
-                             Mathf.Floor((float) width / 2f) - xModifier);
+                             Mathf.Floor((float) map.width / 2f));
         int mapZ =
-            Mathf.RoundToInt(length -
+            Mathf.RoundToInt(map.length -
                              (Mathf.Round(position.z) - Mathf.Round(transform.position.z) +
-                              Mathf.Floor((float) length / 2f) - zModifier));
-
-        if (mapX < 0 || mapX >= width ||
-            mapZ < 0 || mapZ >= length)
+                              Mathf.Floor((float) map.length / 2f)));
+        //Debug.Log (mapX +" "+ mapZ +", "+ width +" "+ length);
+        if (mapX < 0 || mapX >= map.width ||
+            mapZ < 0 || mapZ >= map.length)
         {
             //Debug.Log (mapX +" "+ mapZ +", "+ width +" "+ length);
             return -1;
         }
-        int tag = collisionMap[Mathf.FloorToInt(mapX), Mathf.FloorToInt(mapZ)];
+        int tag = map.collisionMap[(Mathf.FloorToInt(mapX), Mathf.FloorToInt(mapZ))];
         return tag;
-    }
-
-    public void setCollisionMap()
-    {
-        collisionMap = new int[width, length];
-
-        //int x = 0;
-        //int z = 0;
-        //contains is an array of every segment of the shorthand
-        // (e.g. {"0x10", "2", "1x4", "2", "0x8", "0x10", "2", etc... } )
-        string[] contains = shorthandCollisionMap.Split(' ');
-        string[] contains2;
-
-        foreach(string contain in contains)
-        {
-            //contains2 is an array of the tag and quantity in the selected segment of the shorthand
-            // (breaks "0x10" into {"0", "10"} ready for processing)
-            contains2 = contain.Split('x');
-
-            calculateCollisionMap(contains2.Length == 1 ? contains2.Length : int.Parse(contains2[1]), int.Parse(contains2[0]));
-        }
-    }
-
-    public void calculateCollisionMap(int lenght, int tag)
-    {
-        int x = 0;
-        int z = 0;
-        for (int i = 0; i < lenght; i++)
-        {
-            //repeat for multiplier amount of times
-            if (x >= this.width)
-            {
-                //if x exceeds the map width,
-                x = 0;//move to the first x on the next line down
-                z += 1;
-            }
-            collisionMap[x, z] = tag;//add tag to current co-ordinates
-            x += 1;
-        }
     }
 
     /// if bridge was found, returned RaycastHit will have a collider
@@ -251,11 +202,6 @@ public class MapCollider : MonoBehaviour
 
         return Mathf.Round(slope * 100f) / 100f;
     }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = wireframeColor;
-        if(drawWireframe)
-            Gizmos.DrawWireMesh(GetComponent<MeshFilter>().sharedMesh,-1,transform.position,transform.rotation,transform.localScale);
-    }
+
 }
 }

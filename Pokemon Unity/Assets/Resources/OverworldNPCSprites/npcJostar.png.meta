@@ -1,0 +1,986 @@
+fileFormatVersion: 2
+guid: 25f082c4f5aec564a9e5f50e7548d1b6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3640693788775630694
+    second: 66_8
+  - first:
+      213: -3262739437356139880
+    second: 66_9
+  - first:
+      213: 1844901160028989544
+    second: 66_10
+  - first:
+      213: -2397826683849962328
+    second: 66_11
+  - first:
+      213: 7469538428845543437
+    second: 66_12
+  - first:
+      213: 7151195550492113288
+    second: 66_13
+  - first:
+      213: 7194746711265357731
+    second: 66_14
+  - first:
+      213: 2014060793379651472
+    second: 66_15
+  - first:
+      213: 5781426395476103382
+    second: 66_4
+  - first:
+      213: -5829036630378802673
+    second: 66_5
+  - first:
+      213: -8898869279689881016
+    second: 66_6
+  - first:
+      213: -1613911031245926600
+    second: 66_7
+  - first:
+      213: -8868653072870737037
+    second: 66_0
+  - first:
+      213: -4108817609249448013
+    second: 66_1
+  - first:
+      213: -2252907708503961994
+    second: 66_2
+  - first:
+      213: -7973404254253574501
+    second: 66_3
+  - first:
+      213: 5612030307825175523
+    second: 66_16
+  - first:
+      213: 1757180023197333060
+    second: 66_17
+  - first:
+      213: 2043483151447616210
+    second: 66_18
+  - first:
+      213: -8901321890749192550
+    second: 66_19
+  - first:
+      213: 5705057018343479267
+    second: 66_20
+  - first:
+      213: 8499049595872179063
+    second: 66_21
+  - first:
+      213: 6008375656288761623
+    second: 66_22
+  - first:
+      213: 3509270107642752515
+    second: 66_23
+  - first:
+      213: -8642800221779645725
+    second: 66_24
+  - first:
+      213: -5109137675910825033
+    second: 66_25
+  - first:
+      213: 1685526330312029645
+    second: 66_26
+  - first:
+      213: 4812952913771199624
+    second: 66_27
+  - first:
+      213: 6020042621809753425
+    second: 66_28
+  - first:
+      213: 8314626028117668486
+    second: 66_29
+  - first:
+      213: 931242670743945128
+    second: 66_30
+  - first:
+      213: 4128649358230477301
+    second: 66_31
+  - first:
+      213: -3373444639792421701
+    second: 66_32
+  - first:
+      213: 6985803496108898441
+    second: 66_33
+  - first:
+      213: 6899426099041294207
+    second: 66_34
+  - first:
+      213: 3682501414039160152
+    second: 66_35
+  - first:
+      213: -4885728876503892009
+    second: 66_36
+  - first:
+      213: 1764627269366309077
+    second: 66_37
+  - first:
+      213: -3834404412056529471
+    second: 66_38
+  - first:
+      213: -2479746531668400451
+    second: 66_39
+  - first:
+      213: 203398171642828321
+    second: 66_40
+  - first:
+      213: 4582931398004307429
+    second: 66_41
+  - first:
+      213: -4202448277087464539
+    second: 66_42
+  - first:
+      213: -2848632897100748129
+    second: 66_43
+  - first:
+      213: 4269371796541868729
+    second: 66_44
+  - first:
+      213: 1249363246758227381
+    second: 66_45
+  - first:
+      213: -2278103514765824803
+    second: 66_46
+  - first:
+      213: 2317806555283990470
+    second: 66_47
+  - first:
+      213: -2073435408735294179
+    second: 66_48
+  - first:
+      213: -5121237604379020316
+    second: 66_49
+  - first:
+      213: 1935487071310458916
+    second: 66_50
+  - first:
+      213: 6202931669404080331
+    second: 66_51
+  - first:
+      213: -137700414636829421
+    second: 66_52
+  - first:
+      213: 7620281247337682039
+    second: 66_53
+  - first:
+      213: -8994289439790191997
+    second: 66_54
+  - first:
+      213: 572933495426085427
+    second: 66_55
+  - first:
+      213: -6785354419768596633
+    second: 66_56
+  - first:
+      213: -6374420248339878574
+    second: 66_57
+  - first:
+      213: 6492984405357760211
+    second: 66_58
+  - first:
+      213: 5736158849077476317
+    second: 66_59
+  - first:
+      213: 2294424128040872469
+    second: 66_60
+  - first:
+      213: 5569403906630009589
+    second: 66_61
+  - first:
+      213: -5933167471791078574
+    second: 66_62
+  - first:
+      213: -5661605765759769249
+    second: 66_63
+  - first:
+      213: 3796407285439691463
+    second: 66_64
+  - first:
+      213: -373031312086570135
+    second: 66_65
+  - first:
+      213: 8658513315382420175
+    second: 66_66
+  - first:
+      213: -5887059136720016433
+    second: 66_67
+  - first:
+      213: 6814275317354064531
+    second: 66_68
+  - first:
+      213: 1473940886834607436
+    second: 66_69
+  - first:
+      213: -2435405037623727574
+    second: 66_70
+  - first:
+      213: 4374743535625259689
+    second: 66_71
+  - first:
+      213: 2068688452563125790
+    second: 66_72
+  - first:
+      213: 6983127041967534061
+    second: 66_73
+  - first:
+      213: 3884006716770264962
+    second: 66_74
+  - first:
+      213: -6690249210495091707
+    second: 66_75
+  - first:
+      213: 961414411927130533
+    second: 66_76
+  - first:
+      213: 6127116304860465457
+    second: 66_77
+  - first:
+      213: 5085625719786156146
+    second: 66_78
+  - first:
+      213: -2237924521818618001
+    second: 66_79
+  - first:
+      213: 6627773697445845565
+    second: 66_80
+  - first:
+      213: 8986544358560633125
+    second: 66_81
+  - first:
+      213: 2013146108041076032
+    second: 66_82
+  - first:
+      213: 4554470272562287779
+    second: 66_83
+  - first:
+      213: -1288987769841487110
+    second: 66_84
+  - first:
+      213: 6007244582053401540
+    second: 66_85
+  - first:
+      213: -3349813503061247660
+    second: 66_86
+  - first:
+      213: -4663858515726864949
+    second: 66_87
+  - first:
+      213: 8278554761605536657
+    second: 66_88
+  - first:
+      213: 160738152835660864
+    second: 66_89
+  - first:
+      213: -7336683728354817008
+    second: 66_90
+  - first:
+      213: -7717220549408583097
+    second: 66_91
+  - first:
+      213: -8592211681364248050
+    second: 66_92
+  - first:
+      213: 1024795883249039715
+    second: 66_93
+  - first:
+      213: 2889929751802708425
+    second: 66_94
+  - first:
+      213: -2189511904710914653
+    second: 66_95
+  - first:
+      213: 2813802426155658968
+    second: 66_96
+  - first:
+      213: 7283431070498018746
+    second: 66_97
+  - first:
+      213: -5929896675073697533
+    second: 66_98
+  - first:
+      213: -6083247712283039603
+    second: 66_99
+  - first:
+      213: 7674269813268281106
+    second: 66_100
+  - first:
+      213: -1123799962777402576
+    second: 66_101
+  - first:
+      213: -796048793343551995
+    second: 66_102
+  - first:
+      213: -3935885499201574881
+    second: 66_103
+  - first:
+      213: 6968325802543241497
+    second: 66_104
+  - first:
+      213: 4459487784237262102
+    second: 66_105
+  - first:
+      213: -6380932406455382319
+    second: 66_106
+  - first:
+      213: -6427611838185622517
+    second: 66_107
+  - first:
+      213: 4159934517141317812
+    second: 66_108
+  - first:
+      213: 6013857659098420805
+    second: 66_109
+  - first:
+      213: -3147804038691719119
+    second: 66_110
+  - first:
+      213: -5236060173424514536
+    second: 66_111
+  - first:
+      213: -2617177071256855128
+    second: 66_112
+  - first:
+      213: 609370713016778227
+    second: 66_113
+  - first:
+      213: -7036742445158545418
+    second: 66_114
+  - first:
+      213: -3315608879709937623
+    second: 66_115
+  - first:
+      213: 6224572816146740919
+    second: 66_116
+  - first:
+      213: 2712717222818279141
+    second: 66_117
+  - first:
+      213: 8956279983059504721
+    second: 66_118
+  - first:
+      213: -8281939969149816381
+    second: 66_119
+  - first:
+      213: -8554269654211408536
+    second: 66_120
+  - first:
+      213: -6998837933898022828
+    second: 66_121
+  - first:
+      213: -8778482976313612031
+    second: 66_122
+  - first:
+      213: 7586849905052156596
+    second: 66_123
+  - first:
+      213: -6895113391451533217
+    second: 66_124
+  - first:
+      213: -6392351856994199460
+    second: 66_125
+  - first:
+      213: 3696549566106132925
+    second: 66_126
+  - first:
+      213: -6907145917974017704
+    second: 66_127
+  - first:
+      213: -6228194118053945686
+    second: 66_128
+  - first:
+      213: 6435469149671592461
+    second: 66_129
+  - first:
+      213: -1982112728028666129
+    second: 66_130
+  - first:
+      213: -5793857259742686366
+    second: 66_131
+  - first:
+      213: -6182386304731835662
+    second: 66_132
+  - first:
+      213: -8347043826559746027
+    second: 66_133
+  - first:
+      213: -6097070921072161037
+    second: 66_134
+  - first:
+      213: -73778179537450297
+    second: 66_135
+  - first:
+      213: 6448944858472009384
+    second: 66_136
+  - first:
+      213: 8966179465027119032
+    second: 66_137
+  - first:
+      213: 4246220584688978616
+    second: 66_138
+  - first:
+      213: 1839347000978364982
+    second: 66_139
+  - first:
+      213: -9134721709783165898
+    second: 66_140
+  - first:
+      213: 4669810230619698290
+    second: 66_141
+  - first:
+      213: 6183293767935091524
+    second: 66_142
+  - first:
+      213: 2887527255086035156
+    second: 66_143
+  - first:
+      213: -8942297441430687711
+    second: 66_144
+  - first:
+      213: -1939501375926421780
+    second: 66_145
+  - first:
+      213: 6880392780373073838
+    second: 66_146
+  - first:
+      213: -3160063699000072203
+    second: 66_147
+  - first:
+      213: 4012808426299112040
+    second: 66_148
+  - first:
+      213: 8981362910443964857
+    second: 66_149
+  - first:
+      213: -1096230633498395614
+    second: npcSubwayBossB_0
+  - first:
+      213: -3237730308065341327
+    second: npcSubwayBossB_1
+  - first:
+      213: -4631463526817371520
+    second: npcSubwayBossB_2
+  - first:
+      213: 877935564568820345
+    second: npcSubwayBossB_3
+  - first:
+      213: 3260483364039499493
+    second: npcSubwayBossB_4
+  - first:
+      213: -1489935097032081385
+    second: npcSubwayBossB_5
+  - first:
+      213: 2128611846387588022
+    second: npcSubwayBossB_6
+  - first:
+      213: -6950783009761098425
+    second: npcSubwayBossB_7
+  - first:
+      213: 6973876508634674155
+    second: npcSubwayBossB_8
+  - first:
+      213: -605596108810968999
+    second: npcSubwayBossB_9
+  - first:
+      213: 3606099132296413172
+    second: npcSubwayBossB_10
+  - first:
+      213: 6211555215835374867
+    second: npcSubwayBossB_11
+  - first:
+      213: 7454823399343411740
+    second: npcSubwayBossB_12
+  - first:
+      213: -734687664017136824
+    second: npcSubwayBossB_13
+  - first:
+      213: 997288681403571927
+    second: npcSubwayBossB_14
+  - first:
+      213: 3491660660771281187
+    second: npcSubwayBossB_15
+  - first:
+      213: 547757820594407039
+    second: npcJostar_0
+  - first:
+      213: 4114420137528780627
+    second: npcJostar_1
+  - first:
+      213: -3881304996248619953
+    second: npcJostar_2
+  - first:
+      213: -1534734578265462491
+    second: npcJostar_3
+  - first:
+      213: -3902253020902403161
+    second: npcJostar_4
+  - first:
+      213: 6287820904268271225
+    second: npcJostar_5
+  - first:
+      213: -2799472254113713385
+    second: npcJostar_6
+  - first:
+      213: 4587558919063669535
+    second: npcJostar_7
+  - first:
+      213: 1911718376273396956
+    second: npcJostar_8
+  - first:
+      213: -1670610324805035643
+    second: npcJostar_9
+  - first:
+      213: -3822053068303077758
+    second: npcJostar_10
+  - first:
+      213: -4437370581645859641
+    second: npcJostar_11
+  - first:
+      213: 7440597524660317485
+    second: npcJostar_12
+  - first:
+      213: -4654715009509516201
+    second: npcJostar_13
+  - first:
+      213: -3601831218109755116
+    second: npcJostar_14
+  - first:
+      213: -164350112121182258
+    second: npcJostar_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 128
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: npcJostar_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 110
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd4cc580cb9c78a10800000000000000
+      internalID: 1911718376273396956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_9
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 110
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58955e7c2ccc0d8e0800000000000000
+      internalID: -1670610324805035643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 110
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e6a170cf655fac0800000000000000
+      internalID: -3822053068303077758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_11
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 110
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4ea3857fa4b62c0800000000000000
+      internalID: -4437370581645859641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 74
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d6706d600524760800000000000000
+      internalID: 7440597524660317485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_13
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 74
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c918f4c51276fb0800000000000000
+      internalID: -4654715009509516201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_14
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 74
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 411d7a72799b30ec0800000000000000
+      internalID: -3601831218109755116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_15
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 74
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec7a83c917c18bdf0800000000000000
+      internalID: -164350112121182258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 38
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a3da617d8968d9c0800000000000000
+      internalID: -3902253020902403161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_5
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 38
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e8f225cc3d24750800000000000000
+      internalID: 6287820904268271225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_6
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 38
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7137dfe21d64629d0800000000000000
+      internalID: -2799472254113713385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_7
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 38
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b07fce7884aaf30800000000000000
+      internalID: 4587558919063669535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76c87fe5d60a9700800000000000000
+      internalID: 547757820594407039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 2
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 357ed12e05b591930800000000000000
+      internalID: 4114420137528780627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 2
+        width: 18
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44f6a18ba5d22ac0800000000000000
+      internalID: -3881304996248619953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: npcJostar_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 2
+        width: 18
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5296afd480783bae0800000000000000
+      internalID: -1534734578265462491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

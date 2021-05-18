@@ -56,7 +56,10 @@ public class PokemonData
         WATER2,
         DITTO,
         DRAGON,
-        UNDISCOVERED
+        UNDISCOVERED,
+        PLANT,
+        GROUND,
+        INDETERMINATE,
     };
 
     public enum LevelingRate

@@ -7,11 +7,15 @@ using System.Linq;
 using PokemonUnity.Frontend.Overworld.Mapping;
 using System.Collections;
 using System;
+using Sirenix.OdinInspector;
 
 namespace PokemonUnity.Frontend.Overworld {
 public class CharacterBase : MonoBehaviour
 {
+    [BoxGroup("Basic Information")]
     public string spriteName;
+
+    [ReadOnly, BoxGroup("Debug")]
     public bool busy = true;
     public enum Direction
     {
@@ -20,21 +24,46 @@ public class CharacterBase : MonoBehaviour
         Down,
         Left
     }
+
+    [BoxGroup("Debug")]
     public Direction direction = Direction.Down;
+
+    [HideInInspector]
     public MapCollider currentMap;
+
+    [HideInInspector]
     public Transform pawn;
+
+    [HideInInspector]
     public Transform pawnReflection;
     //public Material pawnReflectionSprite;
-    public SpriteRenderer pawnSprite;
-    public SpriteRenderer pawnReflectionSprite;
-    public Transform hitBox;
-    public Sprite[] spriteSheet;
-    public int frame;
-    public int frames;
-    public int framesPerSec;
-    public float secPerFrame;
-    public bool animPause;
 
+    [BoxGroup("Basic Information")]
+    public SpriteRenderer pawnSprite;
+
+    [HideInInspector]
+    public SpriteRenderer pawnReflectionSprite;
+
+    [HideInInspector]
+    public Transform hitBox;
+
+    [BoxGroup("Basic Information")]
+    public Sprite[] spriteSheet;
+
+    [HideInInspector]
+    public int frame;
+
+    [HideInInspector]
+    public int frames;
+
+    [HideInInspector]
+    public int framesPerSec;
+
+    [HideInInspector]
+    public float secPerFrame;
+
+    [HideInInspector]
+    public bool animPause;
     public virtual void Awake()
     {
         pawnSprite = transform.Find("Pawn").GetComponent<SpriteRenderer>();
