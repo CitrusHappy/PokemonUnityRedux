@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/mapTemple.unity
     guid: 05bfad261d0cb2f4a88e502aa726cf94
+  - enabled: 1
+    path: Assets/pokemonCenter.unity
+    guid: a319485cf7cbb3844b6c4770a524d3dc
   m_configObjects: {}

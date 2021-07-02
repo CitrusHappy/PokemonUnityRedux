@@ -69,17 +69,13 @@ MonoBehaviour:
   - direction: 0
     steps: 0
     endWait: 0
-  walkRange: {x: 0, y: 0}
+  walkRange: {x: 40, y: 40}
   trainerSurfing: 0
   destinationMap: {fileID: 0}
   exclaim: {fileID: 0}
-  dialogue: []
-  trainerParty:
-  - ID: 0
-    level: 0
-    gender: 0
-    heldItem: 
-    ability: 0
+  dialogue:
+  - im different because im girl
+  trainerParty: []
   party: []
   trainerName: 
 --- !u!1 &158474
@@ -173,6 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 441336}
   - component: {fileID: 21256192}
+  - component: {fileID: 4931150195168525632}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -233,7 +230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -5640298714294732949, guid: 74bb45cec58eef94a8a58abce35e8977,
+  m_Sprite: {fileID: -8160843163242118741, guid: 74bb45cec58eef94a8a58abce35e8977,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -245,6 +242,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4931150195168525632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ede9cb7fcd3f1648bab5734fce094f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteSheet:
+  - {fileID: -4800574494691138085, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 2840652617004160880, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 2743354958984544817, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -8565483167571968089, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -5640298714294732949, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 8760401632504956373, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 2539331669304383867, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 4509839670814464038, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -2495297669566629615, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 5666465183463201781, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -8160843163242118741, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 3162794455915554989, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 5023416008822739364, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -6194150318477928668, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: 1405907153309243474, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
+  - {fileID: -7824884994951093059, guid: 74bb45cec58eef94a8a58abce35e8977, type: 3}
 --- !u!1 &163520
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ public class MapSettings : MonoBehaviour
     public AudioClip mapBGMNightClip = null;
     public int mapBGMNightLoopStartSamples = 0;
     public string mapName;
-    public Sprite mapNameBoxTexture;
-    public Color mapNameColor = new Color(0.066f, 0.066f, 0.066f, 1);
+
+    public bool showMapName;
 
 
     public bool isVFX;

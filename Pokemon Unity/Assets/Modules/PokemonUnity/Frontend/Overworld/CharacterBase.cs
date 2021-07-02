@@ -38,7 +38,7 @@ public class CharacterBase : MonoBehaviour
     public Transform pawnReflection;
     //public Material pawnReflectionSprite;
 
-    [BoxGroup("Basic Information")]
+    [BoxGroup("Basic Information"), ReadOnly]
     public SpriteRenderer pawnSprite;
 
     [HideInInspector]
@@ -47,7 +47,7 @@ public class CharacterBase : MonoBehaviour
     [HideInInspector]
     public Transform hitBox;
 
-    [BoxGroup("Basic Information")]
+    [BoxGroup("Basic Information"), ReadOnly]
     public Sprite[] spriteSheet;
 
     [HideInInspector]

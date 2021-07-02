@@ -19,7 +19,7 @@ public class Player : CharacterBase
     public static Player player;
     private MapNameBoxHandler MapName;
 
-    //before a script runs, it'll check if the player is busy with another script's GameObject.
+    //before a script runs, it'll check if the player is busy with another script's GameObject
     public GameObject busyWith = null;
 
     public bool moving = false;
@@ -170,10 +170,9 @@ public class Player : CharacterBase
                 accessedAudioLoopStartSamples = loopStartSamples;
                 BgmHandler.main.PlayMain(accessedAudio, accessedAudioLoopStartSamples);
             }
-            if (accessedMapSettings.mapNameBoxTexture != null)
+            if (accessedMapSettings.showMapName == true)
             {
-                MapName.display(accessedMapSettings.mapNameBoxTexture, accessedMapSettings.mapName,
-                    accessedMapSettings.mapNameColor);
+                MapName.display(accessedMapSettings.mapName);
             }
         }
 
@@ -757,10 +756,9 @@ public class Player : CharacterBase
                                 BgmHandler.main.PlayMain(accessedAudio, accessedAudioLoopStartSamples);
                             }
                             destinationMap.BroadcastMessage("repair", SendMessageOptions.DontRequireReceiver);
-                            if (accessedMapSettings.mapNameBoxTexture != null)
+                            if (accessedMapSettings.showMapName == true)
                             {
-                                MapName.display(accessedMapSettings.mapNameBoxTexture, accessedMapSettings.mapName,
-                                    accessedMapSettings.mapNameColor);
+                                MapName.display(accessedMapSettings.mapName);
                             }
                             Debug.Log(destinationMap.name + "   " + accessedAudio.name);
                         }

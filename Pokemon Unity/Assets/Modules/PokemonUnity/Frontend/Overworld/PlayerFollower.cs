@@ -13,6 +13,10 @@ public class PlayerFollower : CharacterBase
 {
     private Player Player;
 
+    public AudioClip cry;
+
+    private AudioSource FollowerAudio;
+
     private Vector3 startPosition;
     private Vector3 destinationPosition;
 
@@ -46,6 +50,8 @@ public class PlayerFollower : CharacterBase
     public override void Awake()
     {
         Player = Player.player;
+
+        FollowerAudio = transform.GetComponent<AudioSource>();
 
         pawn = transform.Find("Pawn");
         pawnLight = transform.Find("PawnLight");
@@ -96,6 +102,7 @@ public class PlayerFollower : CharacterBase
         }
         transform.position = startPosition;
         changeFollower(followerIndex);
+
         StartCoroutine("animateSprite");
     }
 
@@ -213,6 +220,8 @@ public class PlayerFollower : CharacterBase
 
         followerLight.color = lightColor;
         followerLight.intensity = lightIntensity;
+
+        cry = Resources.Load<AudioClip>("Audio/cry/" + pokemonID);
     }
 
     public void reflect(bool setState)
@@ -286,11 +295,14 @@ public class PlayerFollower : CharacterBase
                     direction = Direction.Up;
                 }
 
+                playClip(cry);
+
                 SceneScript.main.Dialog.DrawDialogBox();
                 yield return
                     SceneScript.main.Dialog.StartCoroutine(SceneScript.main.Dialog.DrawText(
                         SaveData.currentSave.PC.boxes[0][followerIndex].getName() +
                         " is enjoying walking around out of their ball."));
+                StopCoroutine("animateSprite");
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -298,6 +310,7 @@ public class PlayerFollower : CharacterBase
                 SceneScript.main.Dialog.UnDrawDialogBox();
                 yield return new WaitForSeconds(0.2f);
                 Player.unsetCheckBusyWith(this.gameObject);
+                StartCoroutine("animateSprite");
             }
         }
     }
@@ -315,5 +328,14 @@ public class PlayerFollower : CharacterBase
             }
         }
     }
+
+
+    private void playClip(AudioClip clip)
+    {
+        FollowerAudio.clip = clip;
+        FollowerAudio.volume = PlayerPrefs.GetFloat("sfxVolume");
+        FollowerAudio.Play();
+    }
+
 }
 }
