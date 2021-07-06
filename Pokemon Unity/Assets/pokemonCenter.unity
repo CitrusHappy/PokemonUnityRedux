@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11403694, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}
       propertyPath: transferPosition.z
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 11403694, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}
       propertyPath: transferDirection
@@ -241,6 +241,14 @@ PrefabInstance:
     - target: {fileID: 11403694, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}
       propertyPath: doSceneChange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403694, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}
+      propertyPath: movesForward
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403694, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}
+      propertyPath: limitEnterDirection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7359081f85606c944a0c3c3eebb4d28b, type: 3}

@@ -14,14 +14,8 @@ public class InteractDoorway : MonoBehaviour
 
     private AudioSource DoorAudio;
 
-    private Animator myAnimator;
-    private SpriteRenderer objectSprite;
     private Light objectLight;
     private Collider hitBox;
-
-    private AudioSource enterSound;
-
-    public bool doSceneChange = false;
     public bool isLocked = false;
     public bool hasLight = false;
     public bool dontFadeMusic = false;
@@ -94,8 +88,6 @@ public class InteractDoorway : MonoBehaviour
             }
         }
 
-        enterSound = this.gameObject.GetComponent<AudioSource>();
-
         initPosition = transform.localPosition;
         initRotation = transform.localRotation;
         initScale = transform.localScale;
@@ -163,12 +155,12 @@ public class InteractDoorway : MonoBehaviour
             {
                 if (Player.player.setCheckBusyWith(this.gameObject))
                 {
-                    if (enterSound != null)
+                    if (DoorAudio != null)
                     {
-                        if (!enterSound.isPlaying)
+                        if (!DoorAudio.isPlaying)
                         {
-                            enterSound.volume = PlayerPrefs.GetFloat("sfxVolume");
-                            enterSound.Play();
+                            DoorAudio.volume = PlayerPrefs.GetFloat("sfxVolume");
+                            playClip(doorOpenClip);
                         }
                     }
 
@@ -200,11 +192,6 @@ public class InteractDoorway : MonoBehaviour
                     }
                     else if (entranceStyle == EntranceStyle.SLIDE)
                     {
-                        //door slide open and play sound
-                        if(doorOpenClip != null)
-                        {
-                            playClip(doorOpenClip);
-                        }
                         //door open
                         float i = 0f;
                         float yRotation = transform.localEulerAngles.y;
@@ -225,9 +212,6 @@ public class InteractDoorway : MonoBehaviour
                                                                            ((Player.player.mainCameraDefaultFOV /10f) * i);
                             yield return null;
                         }
-
-
-
 
 
 
@@ -287,79 +271,51 @@ public class InteractDoorway : MonoBehaviour
                         Player.player.forceMoveForward();
                     }
 
-                    if(doSceneChange)
+                    //fade out the scene and load a new scene
+                    //sceneActivity.playerData.fadeTex = fadeTex;
+                    //float fadeTime = sceneTransition.FadeOut() + 0.4f;
+                    float fadeTime = ScreenFade.slowedSpeed + 0.4f;
+                    //fadeCutouts for doorways not yet implemented
+                    StartCoroutine(ScreenFade.main.Fade(false, ScreenFade.slowedSpeed));
+                    if (!dontFadeMusic)
                     {
-                        //fade out the scene and load a new scene
-                        //sceneActivity.playerData.fadeTex = fadeTex;
-                        //float fadeTime = sceneTransition.FadeOut() + 0.4f;
-                        float fadeTime = ScreenFade.slowedSpeed + 0.4f;
-                        //fadeCutouts for doorways not yet implemented
-                        StartCoroutine(ScreenFade.main.Fade(false, ScreenFade.slowedSpeed));
-                        if (!dontFadeMusic)
-                        {
-                            BgmHandler.main.PlayMain(null, 0);
-                        }
-                        yield return new WaitForSeconds(fadeTime);
-
-
-                        //reset camera and doorway transforms
-                        Player.player.mainCamera.transform.localPosition =
-                            Player.player.mainCameraDefaultPosition;
-                        Player.player.mainCamera.fieldOfView = Player.player.mainCameraDefaultFOV;
-                        transform.localPosition = initPosition;
-                        transform.localRotation = initRotation;
-                        transform.localScale = initScale;
-
-
-                        if (!string.IsNullOrEmpty(transferScene))
-                        {
-                            //sceneActivity.CheckLevelLoaded(transferScene, 0);
-
-                            sceneActivity.playerData.playerPosition = transferPosition;
-                            sceneActivity.playerData.playerDirection = transferDirection;
-                            sceneActivity.playerData.playerForwardOnLoad = movesForward;
-                            sceneActivity.playerData.fadeIn = true;
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(transferScene);
-                        }
-                        else
-                        {
-                            //uncheck busy with to ensure events at destination can be run.
-                            Player.player.unsetCheckBusyWith(this.gameObject);
-
-                            //transfer to current scene, no saving/loading nessecary
-                            Player.player.updateAnimation("walk", Player.player.walkFPS);
-                            Player.player.speed = Player.player.walkSpeed;
-
-                            Player.player.transform.position = transferPosition;
-                            //Player.player.updateDirection(transferDirection);
-                            if (movesForward)
-                            {
-                                Player.player.forceMoveForward();
-                            }
-
-                            sceneActivity.playerData.fadeIn = true;
-
-                            //SceneTransition.gameScene.FadeIn();
-                            StartCoroutine(ScreenFade.main.Fade(true, ScreenFade.slowedSpeed));
-
-                            yield return new WaitForSeconds(0.1f);
-                            Player.player.pauseInput(0.2f);
-                        }
+                        BgmHandler.main.PlayMain(null, 0);
+                    }
+                    yield return new WaitForSeconds(fadeTime);
+                    //reset camera and doorway transforms
+                    Player.player.mainCamera.transform.localPosition =
+                        Player.player.mainCameraDefaultPosition;
+                    Player.player.mainCamera.fieldOfView = Player.player.mainCameraDefaultFOV;
+                    transform.localPosition = initPosition;
+                    transform.localRotation = initRotation;
+                    transform.localScale = initScale;
+                    if (!string.IsNullOrEmpty(transferScene))
+                    {
+                        //sceneActivity.CheckLevelLoaded(transferScene, 0);
+                        sceneActivity.playerData.playerPosition = transferPosition;
+                        sceneActivity.playerData.playerDirection = transferDirection;
+                        sceneActivity.playerData.playerForwardOnLoad = movesForward;
+                        sceneActivity.playerData.fadeIn = true;
+                        UnityEngine.SceneManagement.SceneManager.LoadScene(transferScene);
                     }
                     else
                     {
-                            //uncheck busy with to ensure events at destination can be run.
-                            Player.player.unsetCheckBusyWith(this.gameObject);
-    
-                            //transfer to current scene, no saving/loading nessecary
-                            Player.player.updateAnimation("walk", Player.player.walkFPS);
-                            Player.player.speed = Player.player.walkSpeed;
-    
-                            //Player.player.updateDirection(transferDirection);
-                            if (movesForward)
-                            {
-                                Player.player.forceMoveForward();
-                            }
+                        //uncheck busy with to ensure events at destination can be run.
+                        Player.player.unsetCheckBusyWith(this.gameObject);
+                        //transfer to current scene, no saving/loading nessecary
+                        Player.player.updateAnimation("walk", Player.player.walkFPS);
+                        Player.player.speed = Player.player.walkSpeed;
+                        Player.player.transform.position = transferPosition;
+                        //Player.player.updateDirection(transferDirection);
+                        if (movesForward)
+                        {
+                            Player.player.forceMoveForward();
+                        }
+                        sceneActivity.playerData.fadeIn = true;
+                        //SceneTransition.gameScene.FadeIn();
+                        StartCoroutine(ScreenFade.main.Fade(true, ScreenFade.slowedSpeed));
+                        yield return new WaitForSeconds(0.1f);
+                        Player.player.pauseInput(0.2f);
                     }
 
                     
@@ -381,8 +337,7 @@ public class InteractDoorway : MonoBehaviour
     private void playClip(AudioClip clip)
     {
         DoorAudio.clip = clip;
-        DoorAudio.volume = PlayerPrefs.GetFloat("sfxVolume") * .3f;
-
+        //DoorAudio.volume = PlayerPrefs.GetFloat("sfxVolume") * .3f;
         DoorAudio.Play();
     }
 }
