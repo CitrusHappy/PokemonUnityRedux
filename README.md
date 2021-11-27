@@ -17,8 +17,3 @@ Please use Unity 2019.4.9f1 before publishing changes.
 * [TeamPopplio](https://github.com/TeamPopplio) (Director)
 
 ## Links
-
-<p align="center">
-    <a href="https://discord.gg/7yzMVA7"><img alt="Trello" height=103 src="https://i.imgur.com/JtoQm1v.png"/></a>
-    <a href="https://trello.com/b/PEpi6aMP/pok%C3%A9mon-unity-redux"><img alt="Trello" src="https://i.imgur.com/zi1dBpv.png"/></a>
-</p>
